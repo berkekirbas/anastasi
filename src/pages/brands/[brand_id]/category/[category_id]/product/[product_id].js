@@ -177,7 +177,7 @@ export default function ProductPage() {
                             fill-rule="nonzero"
                           />
                         </svg>
-                        Add to cart
+                        Sepete ekle
                       </button>
                     </div>
                   </section>

@@ -72,7 +72,7 @@ export default function ShoppingCard({ show, setShow }) {
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
                       <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                        Add to favorites
+                        Favorilere ekle
                       </p>
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
                         Remove
@@ -118,7 +118,7 @@ export default function ShoppingCard({ show, setShow }) {
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
                       <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                        Add to favorites
+                        Favorilere ekle
                       </p>
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
                         Remove
@@ -164,7 +164,7 @@ export default function ShoppingCard({ show, setShow }) {
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
                       <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">
-                        Add to favorites
+                        Favorilere ekle{" "}
                       </p>
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">
                         Remove
