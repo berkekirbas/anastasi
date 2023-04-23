@@ -1,8 +1,10 @@
 import "@/styles/globals.css";
-
+import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { Inter } from "next/font/google";
+
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,6 +20,7 @@ function App({ Component, ...rest }) {
       <Provider store={store}>
         <PersistGate persistor={store.__persistor} loading={<Loader />}>
           <Component {...props.pageProps} />
+          <ToastContainer />
         </PersistGate>
       </Provider>
     </main>

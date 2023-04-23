@@ -801,9 +801,9 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <a href="/" className="text-gray-500">
+          <Link href="/" className="text-gray-500">
             Tüm Hakları saklıdır. 2023 - Anastasiabeautylab
-          </a>
+          </Link>
         </footer>
       </main>
 

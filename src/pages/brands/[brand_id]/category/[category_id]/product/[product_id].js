@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -39,6 +40,12 @@ export default function ProductPage() {
         category_id,
       })
     );
+
+    toast("Ürün Başarıyla Sepete Eklendi", {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: "success",
+    });
   };
 
   useEffect(() => {

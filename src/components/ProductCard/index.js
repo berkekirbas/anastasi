@@ -2,6 +2,7 @@ import { addToCard } from "@/store/slices/cardSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export default function ProductCard({
   product_id,
@@ -34,6 +35,12 @@ export default function ProductCard({
         category_id,
       })
     );
+
+    toast("Ürün Başarıyla Sepete Eklendi", {
+      hideProgressBar: true,
+      autoClose: 2000,
+      type: "success",
+    });
   };
 
   return (
