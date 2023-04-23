@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}*/
+
+.nav-link {
+  @apply lg:text-grayish_blue lg:hover:text-black relative lg:after:absolute lg:after:left-0 lg:after:w-0 lg:after:h-[3px] lg:after:-bottom-7 lg:after:bg-orange lg:hover:after:w-full lg:hover:after:transition-[width] hover:after:duration-300 hover:after:ease-in-out pb-4 lg:pb-0 cursor-pointer text-black
+    font-bold lg:font-normal;
+}
+
+.card {
+  @apply min-w-[96%] container w-64 h-auto lg:h-52 absolute z-20 top-20 right-0 left-0 rounded-md shadow-lg bg-white overflow-hidden mx-auto lg:min-w-0 lg:top-14 lg:left-auto lg:-right-12 lg:mx-0 animate-zoom;
+}
+
+.sidenav {
+  @apply lg:relative lg:left-0 lg:min-h-0 lg:animate-none lg:bg-transparent bg-white lg:pl-0 lg:pt-0 fixed -left-5 top-0 w-[75%] z-50  min-h-screen pl-14 pt-8 animate-slidein lg:block lg:shadow-none shadow-3xl;
+}
+
+.bigBtn {
+  @apply flex items-center justify-center bg-orange py-2 px-6 gap-4 text-white cursor-pointer rounded-md text-sm lg:hover:bg-orange/50 w-full;
+}
+
+.container-body {
+  @apply min-h-screen lg:w-4/5 xl:w-[67%] w-full lg:container lg:mx-auto lg:px-5 relative z-10;
+}
+
+.active-thumbnail {
+  @apply border-2 border-orange opacity-50;
+}
