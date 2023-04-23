@@ -651,7 +651,11 @@ export default function Home() {
                       <ul className="w-full text-center   text-sm">
                         <li className="flex flex-center align-center justify-center items-center">
                           <Image
-                            src={brand.brand_photo}
+                            src={
+                              process.env.NEXT_PUBLIC_API_URL +
+                              "/system/public/uploads/" +
+                              brand.brand_photo
+                            }
                             width={256}
                             height={256}
                             alt="hero"
