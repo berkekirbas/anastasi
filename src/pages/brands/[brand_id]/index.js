@@ -19,7 +19,7 @@ export default function BrandPage() {
     if (brand_id != undefined) {
       dispatch(getMenu(brand_id));
     }
-  }, [brand_id]);
+  }, [brand_id, dispatch]);
 
   if (isLoading == null || isLoading) return <Loader />;
 
@@ -27,7 +27,7 @@ export default function BrandPage() {
     <MenuLayout title={menu[0].brand_name}>
       <Header brand_name={menu[0].brand_name} />
       <section className="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-10 mb-5">
-        {menu[0].categories.map((category) => (
+        {menu[0]?.categories.map((category) => (
           <CategoryCard
             key={category.id}
             category_name={category.category_name}
