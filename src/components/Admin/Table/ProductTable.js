@@ -70,14 +70,14 @@ export default function ProductTable() {
       <div>
         <div className="sm:px-6 w-full">
           <div className="bg-white py-4 md:py-7 px-4 md:px-8 xl:px-10">
-            <div class="sm:flex items-center justify-between">
-              <div class="flex items-center">
+            <div className="sm:flex items-center justify-between">
+              <div className="flex items-center">
                 <button
-                  class="rounded-full focus:outline-none focus:ring555-2  focus:bg-indigo-50 focus:ring-indigo-800"
+                  className="rounded-full focus:outline-none focus:ring555-2  focus:bg-indigo-50 focus:ring-indigo-800"
                   onClick={() => setFilteringId(-1)}
                 >
                   <div
-                    class={
+                    className={
                       filteringId == -1
                         ? "text-indigo-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 py-2 px-8 rounded-full"
                         : "py-2 px-8 rounded-full"
@@ -88,12 +88,12 @@ export default function ProductTable() {
                 </button>
                 {brands.map((brand) => (
                   <button
-                    class="rounded-full focus:outline-none focus:ring555-2  focus:bg-indigo-50 focus:ring-indigo-800"
+                    className="rounded-full focus:outline-none focus:ring555-2  focus:bg-indigo-50 focus:ring-indigo-800"
                     key={brand.id}
                     onClick={() => setFilter(brand.id)}
                   >
                     <div
-                      class={
+                      className={
                         filteringId == brand.id
                           ? "text-indigo-600 dark:text-gray-200  hover:text-indigo-700 hover:bg-indigo-100 py-2 px-8 rounded-full"
                           : "py-2 px-8 rounded-full"

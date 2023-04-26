@@ -57,6 +57,10 @@ export default function ProductAddModal({ show, setShow }) {
     setShow(!show);
   };
 
+  const setPhotos = (event) => {
+    setProductPhoto(event.target.files);
+  };
+
   return (
     <div>
       <div
@@ -106,11 +110,12 @@ export default function ProductAddModal({ show, setShow }) {
 
               <Input
                 id="product_photo"
+                multiple
                 type="file"
                 name="product_photo"
                 placeholder="Ürün Fotoğrafı"
                 className="block mt-1 w-full"
-                onChange={(event) => setProductPhoto(event.target.files[0])}
+                onChange={(event) => setPhotos(event)}
                 required
                 autoFocus
               />

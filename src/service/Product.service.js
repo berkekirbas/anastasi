@@ -52,10 +52,13 @@ class ProductService {
 
     formData.append("product_name", product_name);
     formData.append("product_explanation", product_explanation);
-    formData.append("product_photo", product_photo);
     formData.append("product_price", product_price);
     formData.append("brand_id", brand_id);
     formData.append("category_id", category_id);
+
+    for (let i = 0; i < product_photo.length; i++) {
+      formData.append("product_photo[]", product_photo[i]);
+    }
 
     return await axios
       .post(`${this.baseUrl}/api/product`, formData, {

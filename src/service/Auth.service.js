@@ -37,7 +37,7 @@ class AuthService {
     const token = localStorage.getItem("token");
     //await this.csrf();
     return await axios
-      .get(
+      .post(
         `${this.baseUrl}/api/editUserInfo`,
         {
           headers: {

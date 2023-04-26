@@ -3,7 +3,8 @@ import { getBrands, publicSelector } from "@/store/slices/publicSlice";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import Script from "next/script";
+import React, { useEffect, useState } from "react";
 import { Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,6 +12,7 @@ export default function Home() {
   const dispatch = useDispatch();
 
   const { public_brands, isLoading } = useSelector(publicSelector);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     dispatch(getBrands()); // publicSlice
@@ -46,6 +48,7 @@ export default function Home() {
               <button
                 id="nav-toggle"
                 className="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                onClick={() => setShow(!show)}
               >
                 <svg
                   className="fill-current h-6 w-6"
@@ -57,43 +60,52 @@ export default function Home() {
                 </svg>
               </button>
             </div>
-            {/*<div
-              className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+            <div
+              className={
+                show
+                  ? "w-full flex-grow lg:flex lg:items-center lg:w-auto  mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+                  : "hidden w-full flex-grow lg:flex lg:items-center lg:w-auto  mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+              }
               id="nav-content"
             >
               <ul className="list-reset lg:flex justify-end flex-1 items-center">
                 <li className="mr-3">
-                  <a
+                  <Link
                     className="inline-block py-2 px-4 text-black font-bold no-underline"
-                    href="#"
+                    href="/about"
                   >
-                    Active
-                  </a>
+                    Hakkımızda
+                  </Link>
                 </li>
                 <li className="mr-3">
-                  <a
-                    className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                    href="#"
+                  <Link
+                    className="inline-block py-2 px-4 text-black font-bold no-underline"
+                    href="/about"
                   >
-                    link
-                  </a>
+                    İletişim
+                  </Link>
                 </li>
                 <li className="mr-3">
-                  <a
-                    className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                    href="#"
+                  <Link
+                    className="inline-block py-2 px-4 text-black font-bold no-underline"
+                    href="https://instagram.com/anastasia.beauty.lab"
                   >
-                    link
-                  </a>
+                    Instagram
+                  </Link>
                 </li>
+                {public_brands.map((brand) => (
+                  <li key={brand.id}>
+                    <Link
+                      id="navAction"
+                      className="inline-block py-2 px-4 text-red-500 font-bold no-underline"
+                      href={`/brands/${brand.id}`}
+                    >
+                      {brand.brand_name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-              <button
-                id="navAction"
-                className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              >
-                Action
-              </button>
-  </div>*/}
+            </div>
           </div>
           <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
         </nav>
@@ -130,11 +142,11 @@ export default function Home() {
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
           >
-            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
               <g
                 transform="translate(-2.000000, 44.000000)"
                 fill="#FFFFFF"
-                fill-rule="nonzero"
+                fillRule="nonzero"
               >
                 <path
                   d="M0,0 C90.7283404,0.927527913 147.912752,27.187927 291.910178,59.9119003 C387.908462,81.7278826 543.605069,89.334785 759,82.7326078 C469.336065,156.254352 216.336065,153.6679 0,74.9732496"
@@ -153,7 +165,7 @@ export default function Home() {
               <g
                 transform="translate(-4.000000, 76.000000)"
                 fill="#FFFFFF"
-                fill-rule="nonzero"
+                fillRule="nonzero"
               >
                 <path d="M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z"></path>
               </g>
@@ -204,8 +216,8 @@ export default function Home() {
                     d="M119.9,721.42c-3-5.51.4-12.27,4.29-17.18s8.61-10,8.51-16.29c-.15-9-9.7-14.31-17.33-19.09a84,84,0,0,1-15.56-12.51A22.8,22.8,0,0,1,95,650c-1.58-3.52-1.54-7.52-1.44-11.37q.51-19.26,1.91-38.49"
                     fill="none"
                     stroke="#3f3d56"
-                    stroke-miterlimit="10"
-                    stroke-width="4"
+                    strokeMiterlimit="10"
+                    strokeWidth="4"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
@@ -282,49 +294,49 @@ export default function Home() {
                     d="M387.5,490A66.5,66.5,0,1,1,321,423.5,66.47,66.47,0,0,1,387.5,490Z"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
                     d="M325.38,467.23l8.3,13,35.53,55.59a66.5,66.5,0,0,1-103.32-8.57l43.54-84.94.91,1.43"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
                     d="M385.31,507a66.46,66.46,0,0,1-16.1,28.82l-35.53-55.59,15.69-24.78a.66.66,0,0,1,1.1,0C353.76,460.32,371,486,385.31,507Z"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
                     d="M337.5,452.5a15,15,0,0,1-12.12,14.73l-15-23.51a15,15,0,0,1,27.16,8.78Z"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
                     d="m347.5 481.5"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
                     d="m333.5 480.5"
                     fill="none"
                     stroke="#f2f2f2"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.5 -150.75)"
@@ -593,8 +605,8 @@ export default function Home() {
                     fill="none"
                     opacity=".8"
                     stroke="#ff6347"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <path
                     transform="translate(-11.697 -13.011)"
@@ -602,8 +614,8 @@ export default function Home() {
                     fill="none"
                     opacity=".8"
                     stroke="#ff6347"
-                    stroke-miterlimit="10"
-                    stroke-width="2"
+                    strokeMiterlimit="10"
+                    strokeWidth="2"
                   />
                   <circle cx="214.07" cy="310.65" r="11.968" fill="#ff6347" />
                   <circle cx="322.2" cy="566.52" r="11.968" fill="#ff6347" />
@@ -684,7 +696,7 @@ export default function Home() {
 
         <section className="container mx-auto text-center py-6 mb-12">
           <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
-            Bizi sosyal medya hesaplarımızda takip edin.
+            Bizi sosyal medya hesaplarımızdan takip edin.
           </h2>
           <div className="w-full mb-4">
             <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
@@ -729,7 +741,7 @@ export default function Home() {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="https://instagram.com/anastasia.beauty.lab"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Instagram
@@ -758,7 +770,7 @@ export default function Home() {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="/terms"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Şartlar ve Koşullar
@@ -766,7 +778,7 @@ export default function Home() {
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="/privacy"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Gizlilik Politikamız
@@ -781,7 +793,7 @@ export default function Home() {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="/courses"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Kurslar
@@ -789,7 +801,7 @@ export default function Home() {
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="/about"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Hakkımızda
@@ -797,7 +809,7 @@ export default function Home() {
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="/about"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       İletişim
