@@ -3,7 +3,7 @@ import { addToCard, cardSelector } from "@/store/slices/cardSlice";
 import { getMenu, publicSelector } from "@/store/slices/publicSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
@@ -84,34 +84,38 @@ export default function ProductPage() {
                         id="main-img"
                         onClick={() => setShow(!show)}
                       />
-                      {/*<div class="">
-                      <img
-                        class="active-thumbnail rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                        src="images/image-product-1.jpg"
-                        alt="image-product-1"
-                      />
-                    </div>
-                    <div class="">
-                      <img
-                        class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                        src="images/image-product-2.jpg"
-                        alt="image-product-2"
-                      />
-                    </div>
-                    <div class="">
-                      <img
-                        class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                        src="images/image-product-3.jpg"
-                        alt="image-product-3"
-                      />
-                    </div>
-                    <div class="">
-                      <img
-                        class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                        src="images/image-product-4.jpg"
-                        alt="image-product-4"
-                      />
-                    </div>*/}
+                      {`${JSON.parse(filtered_product.photos)}`}
+
+                      <Fragment key={filtered_product.id}>
+                        <div class="">
+                          <Image
+                            class="active-thumbnail rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            src="images/image-product-1.jpg"
+                            alt="image-product-1"
+                          />
+                        </div>
+                        <div class="">
+                          <Image
+                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            src="images/image-product-2.jpg"
+                            alt="image-product-2"
+                          />
+                        </div>
+                        <div class="">
+                          <Image
+                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            src="images/image-product-3.jpg"
+                            alt="image-product-3"
+                          />
+                        </div>
+                        <div class="">
+                          <imImageg
+                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            src="images/image-product-4.jpg"
+                            alt="image-product-4"
+                          />
+                        </div>
+                      </Fragment>
                     </div>
                   </section>
 

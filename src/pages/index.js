@@ -99,6 +99,7 @@ export default function Home() {
                       id="navAction"
                       className="inline-block py-2 px-4 text-red-500 font-bold no-underline"
                       href={`/brands/${brand.id}`}
+                      target="_blank"
                     >
                       {brand.brand_name}
                     </Link>
