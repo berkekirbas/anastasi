@@ -85,8 +85,9 @@ export default function ProductPage() {
                         onClick={() => setShow(!show)}
                       />
 
-                      <div class="lg:flex gap-8 items-center hidden">
-                        {filtered_product.photos == "" ? (
+                      <div class="pt-2 lg:flex gap-8 items-center hidden">
+                        {filtered_product.photos == "" ||
+                        filtered_product.photos.length == 1 ? (
                           <></>
                         ) : (
                           JSON.parse(filtered_product.photos).map((photo) => (
