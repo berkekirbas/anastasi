@@ -90,21 +90,25 @@ export default function ProductPage() {
                         filtered_product.photos.length == 1 ? (
                           <></>
                         ) : (
-                          JSON.parse(filtered_product.photos).map((photo) => (
-                            <Fragment key={filtered_product.photos.length}>
-                              <div class="">
-                                <Image
-                                  class="lg:light-box-image lg:rounded-xl h-full w-full lg:cursor-pointer"
-                                  src={
-                                    process.env.NEXT_PUBLIC_API_URL +
-                                    "/system/public/uploads/" +
-                                    photo
-                                  }
-                                  alt="product photos"
-                                />
-                              </div>
-                            </Fragment>
-                          ))
+                          JSON.parse(filtered_product.photos).map((photo) =>
+                            photo.length == 1 ? (
+                              <></>
+                            ) : (
+                              <Fragment key={filtered_product.photos.length}>
+                                <div class="">
+                                  <Image
+                                    class="lg:light-box-image lg:rounded-xl h-full w-full lg:cursor-pointer"
+                                    src={
+                                      process.env.NEXT_PUBLIC_API_URL +
+                                      "/system/public/uploads/" +
+                                      photo
+                                    }
+                                    alt="product photos"
+                                  />
+                                </div>
+                              </Fragment>
+                            )
+                          )
                         )}
                       </div>
                     </div>
