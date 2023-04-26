@@ -87,23 +87,21 @@ export default function ProductPage() {
                       {`${JSON.parse(filtered_product.photos)[0]}`}
 
                       <div class="lg:flex gap-8 items-center hidden">
-                        {JSON.parse(filtered_product.photos).forEach(
-                          (photo) => (
-                            <Fragment key={filtered_product.photos.length}>
-                              <div class="">
-                                <Image
-                                  class="lg:light-box-image lg:rounded-xl h-full w-full lg:cursor-pointer"
-                                  src={
-                                    process.env.NEXT_PUBLIC_API_URL +
-                                    "/system/public/uploads/" +
-                                    photo
-                                  }
-                                  alt="product photos"
-                                />
-                              </div>
-                            </Fragment>
-                          )
-                        )}
+                        {JSON.parse(filtered_product.photos).map((photo) => (
+                          <Fragment key={filtered_product.photos.length}>
+                            <div class="">
+                              <Image
+                                class="lg:light-box-image lg:rounded-xl h-full w-full lg:cursor-pointer"
+                                src={
+                                  process.env.NEXT_PUBLIC_API_URL +
+                                  "/system/public/uploads/" +
+                                  photo
+                                }
+                                alt="product photos"
+                              />
+                            </div>
+                          </Fragment>
+                        ))}
                       </div>
                     </div>
                   </section>
