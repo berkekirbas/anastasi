@@ -86,36 +86,21 @@ export default function ProductPage() {
                       />
                       {`${JSON.parse(filtered_product.photos)[0]}`}
 
-                      <Fragment key={filtered_product.id}>
-                        <div class="">
-                          <Image
-                            class="active-thumbnail rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                            src="images/image-product-1.jpg"
-                            alt="image-product-1"
-                          />
-                        </div>
-                        <div class="">
-                          <Image
-                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                            src="images/image-product-2.jpg"
-                            alt="image-product-2"
-                          />
-                        </div>
-                        <div class="">
-                          <Image
-                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                            src="images/image-product-3.jpg"
-                            alt="image-product-3"
-                          />
-                        </div>
-                        <div class="">
-                          <imImageg
-                            class="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
-                            src="images/image-product-4.jpg"
-                            alt="image-product-4"
-                          />
-                        </div>
-                      </Fragment>
+                      {JSON.parse(filtered_product.photos).map((photo) => (
+                        <Fragment key={filtered_product.photos.length}>
+                          <div class="">
+                            <Image
+                              class="active-thumbnail rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                              src={
+                                process.env.NEXT_PUBLIC_API_URL +
+                                "/system/public/uploads/" +
+                                photo
+                              }
+                              alt="product photos"
+                            />
+                          </div>
+                        </Fragment>
+                      ))}
                     </div>
                   </section>
 
