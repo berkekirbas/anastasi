@@ -84,7 +84,7 @@ export default function ProductPage() {
                         id="main-img"
                         onClick={() => setShow(!show)}
                       />
-                      {`${JSON.parse(filtered_product.photos)}`}
+                      {`${JSON.parse(filtered_product.photos)[0]}`}
 
                       <Fragment key={filtered_product.id}>
                         <div class="">
