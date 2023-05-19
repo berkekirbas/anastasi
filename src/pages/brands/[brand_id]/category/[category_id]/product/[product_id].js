@@ -1,11 +1,12 @@
-import { Loader, MenuLayout, icon_minus, icon_plus } from "@/components";
-import { addToCard, cardSelector } from "@/store/slices/cardSlice";
-import { getMenu, publicSelector } from "@/store/slices/publicSlice";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+
+import { Loader, MenuLayout, icon_minus, icon_plus } from "@/components";
+import { addToCard, cardSelector } from "@/store/slices/cardSlice";
+import { getMenu, publicSelector } from "@/store/slices/publicSlice";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -47,6 +48,16 @@ export default function ProductPage() {
       type: "success",
     });
   };
+
+  console.log(
+    menu[0].categories
+      .filter((category) => category.id == category_id)
+      .map((filtered_category) =>
+        filtered_category.products
+          .filter((product) => product.id == product_id)
+          .map((filtered_product) => filtered_product)
+      )
+  );
 
   useEffect(() => {
     if (brand_id != undefined) {

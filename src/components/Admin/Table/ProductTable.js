@@ -126,7 +126,7 @@ export default function ProductTable() {
                                 <div className="flex items-center">
                                   <p className="text-base font-medium leading-none mr-2">
                                     <span className="text-red-500">
-                                      Kategori Adı:{" "}
+                                      Ürün Adı:{" "}
                                     </span>
                                     {product.product_name}
                                   </p>
@@ -139,7 +139,7 @@ export default function ProductTable() {
                                 <div className="flex items-center">
                                   <p className="text-base font-medium leading-none  mr-2">
                                     <span className="text-red-500">
-                                      Kategori Açıklaması:
+                                      Ürün Açıklaması:
                                     </span>{" "}
                                     {product.product_explanation}
                                   </p>

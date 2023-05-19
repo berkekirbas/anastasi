@@ -742,7 +742,7 @@ export default function Home() {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="https://instagram.com/anastasia.beauty.lab"
+                      href="https://instagram.com/avenue_professional_konya"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
                       Instagram
@@ -750,18 +750,18 @@ export default function Home() {
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="https://youtube.com/@Avenue_professional_konya"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
-                      Twitter
+                      Youtube
                     </Link>
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      href="/"
+                      href="https://www.tiktok.com/@avenue.professional"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
-                      Facebook
+                      Tiktok
                     </Link>
                   </li>
                 </ul>
