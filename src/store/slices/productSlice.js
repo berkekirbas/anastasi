@@ -38,7 +38,9 @@ export const productSlice = createSlice({
         payload.product.id,
         payload.product.product_name,
         payload.product.product_explanation,
-        payload.product.product_photo,
+        payload.product.photo1,
+        payload.product.photo2,
+        payload.product.photo3,
         payload.product.product_price,
         payload.product.brand_id,
         payload.product.category_id,
@@ -90,7 +92,9 @@ export const addProduct =
   (
     product_name,
     product_explanation,
-    product_photo,
+    photo1,
+    photo2,
+    photo3,
     product_price,
     brand_id,
     category_id
@@ -101,7 +105,9 @@ export const addProduct =
       const response = await ProductService.addProduct(
         product_name,
         product_explanation,
-        product_photo,
+        photo1,
+        photo2,
+        photo3,
         product_price,
         brand_id,
         category_id
@@ -117,7 +123,10 @@ export const editProduct =
     product_id,
     product_name,
     product_explanation,
-    product_photo,
+    photo1,
+    photo2,
+    photo3,
+
     product_price,
     brand_id,
     category_id
@@ -129,7 +138,9 @@ export const editProduct =
         product_id,
         product_name,
         product_explanation,
-        product_photo,
+        photo1,
+        photo2,
+        photo3,
         product_price,
         brand_id,
         category_id

@@ -20,7 +20,9 @@ export default function ProductAddModal({ show, setShow }) {
 
   const [productName, setProductName] = useState(null);
   const [productExplanation, setProductExplanation] = useState(null);
-  const [product_photo, setProductPhoto] = useState(null);
+  const [photo1, setPhoto1] = useState(null);
+  const [photo2, setPhoto2] = useState(null);
+  const [photo3, setPhoto3] = useState(null);
   const [product_price, setProductPrice] = useState(null);
 
   const [brand_id, setBrandId] = useState(null);
@@ -33,7 +35,9 @@ export default function ProductAddModal({ show, setShow }) {
       addProduct(
         productName,
         productExplanation,
-        product_photo,
+        photo1,
+        photo2,
+        photo3,
         product_price,
         brand_id,
         category_id
@@ -45,7 +49,9 @@ export default function ProductAddModal({ show, setShow }) {
     if (isLoading == false) {
       setProductName(null);
       setProductExplanation(null);
-      setProductPhoto(null);
+      setPhoto1(null);
+      setPhoto2(null);
+      setPhoto3(null);
       setProductPrice(null);
       setBrandId(null);
       setCategoryId(null);
@@ -55,10 +61,6 @@ export default function ProductAddModal({ show, setShow }) {
 
   const click = () => {
     setShow(!show);
-  };
-
-  const setPhotos = (event) => {
-    setProductPhoto(event.target.files);
   };
 
   return (
@@ -106,16 +108,42 @@ export default function ProductAddModal({ show, setShow }) {
                 autoFocus
               />
 
-              <Label htmlFor="product_photo">Ürün Fotoğrafı</Label>
+              <Label htmlFor="photo1">Ürün Fotoğrafı 1</Label>
 
               <Input
-                id="product_photo"
+                id="photo1"
                 multiple
                 type="file"
-                name="product_photo"
-                placeholder="Ürün Fotoğrafı"
+                name="photo1"
+                placeholder="Ürün Fotoğrafı 1"
                 className="block mt-1 w-full"
-                onChange={(event) => setPhotos(event)}
+                onChange={(event) => setPhoto1(event.target.files[0])}
+                required
+                autoFocus
+              />
+              <Label htmlFor="photo2">Ürün Fotoğrafı 2</Label>
+
+              <Input
+                id="photo2"
+                multiple
+                type="file"
+                name="photo2"
+                placeholder="Ürün Fotoğrafı 2"
+                className="block mt-1 w-full"
+                onChange={(event) => setPhoto2(event.target.files[0])}
+                required
+                autoFocus
+              />
+              <Label htmlFor="photo3">Ürün Fotoğrafı 3</Label>
+
+              <Input
+                id="photo3"
+                multiple
+                type="file"
+                name="photo3"
+                placeholder="Ürün Fotoğrafı 3"
+                className="block mt-1 w-full"
+                onChange={(event) => setPhoto3(event.target.files[0])}
                 required
                 autoFocus
               />

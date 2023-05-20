@@ -28,7 +28,10 @@ export default function EditProductModal({
 
   const [productName, setProductName] = useState(null);
   const [productExplanation, setProductExplanation] = useState(null);
-  const [productPhoto, setProductPhoto] = useState(null);
+  const [photo1, setPhoto1] = useState(null);
+  const [photo2, setPhoto2] = useState(null);
+  const [photo3, setPhoto3] = useState(null);
+
   const [productPrice, setProductPrice] = useState(null);
   const [brandId, setBrandId] = useState(null);
   const [categoryId, setCategoryId] = useState(null);
@@ -40,7 +43,9 @@ export default function EditProductModal({
         product_id,
         productName,
         productExplanation,
-        productPhoto,
+        photo1,
+        photo2,
+        photo3,
         productPrice,
         brandId,
         categoryId
@@ -52,7 +57,9 @@ export default function EditProductModal({
     if (isLoading == false) {
       setProductName(null);
       setProductExplanation(null);
-      setProductPhoto(null);
+      setPhoto1(null);
+      setPhoto2(null);
+      setPhoto3(null);
       setProductPrice(null);
       setBrandId(null);
       setCategoryId(null);
@@ -119,15 +126,53 @@ export default function EditProductModal({
                 required
               />
 
-              <Label htmlFor="product_photo">Ürün Fotoğrafı</Label>
+              <Label htmlFor="photo1">Ürün Fotoğrafı 1</Label>
 
               <Input
-                id="product_photo"
+                id="photo1"
                 type="file"
-                name="product_photo"
-                placeholder="Ürün Fotoğrafı"
+                name="photo1"
+                placeholder="Ürün Fotoğrafı 1"
                 className="block mt-1 w-full"
-                onChange={(event) => setProductPhoto(event.target.files[0])}
+                onChange={(event) => setPhoto1(event.target.files[0])}
+                required
+                value={photo1}
+              />
+              <Label htmlFor="photo2">Ürün Fotoğrafı 2</Label>
+
+              <Input
+                id="photo2"
+                type="file"
+                name="photo2"
+                placeholder="Ürün Fotoğrafı 2"
+                className="block mt-1 w-full"
+                onChange={(event) => setPhoto2(event.target.files[0])}
+                required
+                value={photo2}
+              />
+              <Label htmlFor="photo3">Ürün Fotoğrafı 3</Label>
+
+              <Input
+                id="photo3"
+                type="file"
+                name="photo3"
+                placeholder="Ürün Fotoğrafı 3"
+                className="block mt-1 w-full"
+                onChange={(event) => setPhoto3(event.target.files[0])}
+                required
+                value={photo3}
+              />
+
+              <Label htmlFor="product_price">Ürün Fiyatı</Label>
+
+              <Input
+                id="product_price"
+                type="text"
+                name="product_price"
+                placeholder="Ürün Fiyatı"
+                className="block mt-1 w-full"
+                onChange={(event) => setProductPrice(event.target.value)}
+                value={productPrice}
                 required
               />
 

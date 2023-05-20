@@ -40,7 +40,9 @@ class ProductService {
   addProduct = async (
     product_name,
     product_explanation,
-    product_photo,
+    photo1,
+    photo2,
+    photo3,
     product_price,
     brand_id,
     category_id
@@ -56,8 +58,14 @@ class ProductService {
     formData.append("brand_id", brand_id);
     formData.append("category_id", category_id);
 
-    for (let i = 0; i < product_photo.length; i++) {
-      formData.append("product_photo[]", product_photo[i]);
+    if (photo1 != null) {
+      formData.append("photo1", photo1);
+    }
+    if (photo2 != null) {
+      formData.append("photo2", photo2);
+    }
+    if (photo3 != null) {
+      formData.append("photo3", photo3);
     }
 
     return await axios
@@ -76,7 +84,9 @@ class ProductService {
     product_id,
     product_name,
     product_explanation,
-    product_photo,
+    photo1,
+    photo2,
+    photo3,
     product_price,
     brand_id,
     category_id
@@ -84,12 +94,14 @@ class ProductService {
     //await this.csrf();
     const token = localStorage.getItem("token");
 
-    if (product_photo != null) {
+    if (photo1 != null || photo2 != null || photo3 != null) {
       const formData = new FormData();
 
       formData.append("product_name", product_name);
       formData.append("product_explanation", product_explanation);
-      formData.append("product_photo", product_photo);
+      formData.append("photo1", photo1);
+      formData.append("photo2", photo2);
+      formData.append("photo3", photo3);
       formData.append("product_price", product_price);
       formData.append("brand_id", brand_id);
       formData.append("category_id", category_id);

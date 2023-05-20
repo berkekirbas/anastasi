@@ -10,6 +10,7 @@ import { useState } from "react";
 import Head from "next/head";
 import { cardSelector } from "@/store/slices/cardSlice";
 import { useRouter } from "next/router";
+import Script from "next/script";
 
 export default function MenuLayout({ title, children }) {
   const router = useRouter();
@@ -36,7 +37,7 @@ export default function MenuLayout({ title, children }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="container-body">
+      <div className=" container-body">
         <header className="flex items-center justify-between py-5 lg:border-b relative w-full z-10 px-5 lg:px-0">
           <div className="flex items-center justify-center gap-3">
             <Image
