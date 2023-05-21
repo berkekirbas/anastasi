@@ -84,7 +84,7 @@ class CategoryService {
       formData.append("brand_id", brand_id);
 
       return await axios
-        .put(`${this.baseUrl}/api/category/${category_id}`, formData, {
+        .post(`${this.baseUrl}/api/category/${category_id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -95,7 +95,7 @@ class CategoryService {
         });
     } else {
       return await axios
-        .put(
+        .post(
           `${this.baseUrl}/api/category/${category_id}`,
           {
             category_name: category_name,

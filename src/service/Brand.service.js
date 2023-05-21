@@ -56,7 +56,7 @@ class BrandService {
       formData.append("brand_photo", brandPhoto);
 
       return await axios
-        .put(`${this.baseUrl}/api/brand/${brandId}`, formData, {
+        .post(`${this.baseUrl}/api/brand/${brandId}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -67,7 +67,7 @@ class BrandService {
         });
     } else {
       return await axios
-        .put(
+        .post(
           `${this.baseUrl}/api/brand/${brandId}`,
           {
             brand_name: brandName,
