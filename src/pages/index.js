@@ -41,7 +41,7 @@ export default function Home() {
                 className="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                 href="/"
               >
-                Anastasia Beauty Lab
+                Anastasia Beauty Lab.
               </Link>
             </div>
             <div className="block lg:hidden pr-4">
@@ -130,9 +130,7 @@ export default function Home() {
         <div className="pt-24">
           <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-              <p className="uppercase tracking-loose w-full">
-                Anastasia Beauty Lab
-              </p>
+              <p className=" tracking-loose w-full">Anastasia Beauty Lab.</p>
               <h1 className="my-4 text-5xl font-bold leading-tight">
                 Kalite tesadüf değildir.
               </h1>
@@ -189,18 +187,63 @@ export default function Home() {
             </g>
           </svg>
         </div>
-        <section className="bg-white border-b py-8">
-          <div className="container max-w-5xl mx-auto m-8">
+
+        <section className="bg-gray-100 py-8" id="products">
+          <div className="container mx-auto px-2 pt-2 pb-8 text-gray-800">
             <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-              Kaliteli Markalarımız ile sizlerin hizmetinizdeyiz
+              Kaliteli Markalarımız ile sizlerin hizmetinizdeyiz.
             </h2>
             <div className="w-full mb-4">
               <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
+            <div className="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
+              {public_brands.map((brand) => (
+                <Fragment key={brand.id}>
+                  <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10 ml-2">
+                    <div className="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
+                      <div className="p-8 text-2xl font-bold text-center border-b-4">
+                        {brand.brand_name}
+                      </div>
+                      <ul className="w-full text-center text-sm">
+                        <li className="flex flex-center align-center justify-center items-center">
+                          <Image
+                            src={
+                              process.env.NEXT_PUBLIC_API_URL +
+                              "/system/public/uploads/" +
+                              brand.brand_photo
+                            }
+                            width={256}
+                            height={256}
+                            alt="hero"
+                          />
+                        </li>
+                      </ul>
+                    </div>
+                    <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
+                      <div className="flex items-center justify-center">
+                        <Link
+                          href={`/brands/${brand.id}`}
+                          className="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Mağazaya Git
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Fragment>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="bg-white border-b py-8">
+          <div className="container max-w-5xl mx-auto m-8">
             <div className="flex flex-wrap">
               <div className="w-5/6 sm:w-1/2 p-6">
                 <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                  Anastasiabeuatylab
+                  Anastasia Beauty Lab.
                 </h3>
                 <p className="text-gray-600 mb-8">
                   Birbirinden kaliteli ve uygun fiyatlı markalarımızla sizlere
@@ -661,56 +704,6 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-gray-100 py-8" id="products">
-          <div className="container mx-auto px-2 pt-2 pb-8 text-gray-800">
-            <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-              Ürünlerimizi inceleyin ve satın alın.
-            </h2>
-            <div className="w-full mb-4">
-              <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-            </div>
-            <div className="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
-              {public_brands.map((brand) => (
-                <Fragment key={brand.id}>
-                  <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10 ml-2">
-                    <div className="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
-                      <div className="p-8 text-3xl font-bold text-center border-b-4">
-                        {brand.brand_name}
-                      </div>
-                      <ul className="w-full text-center text-sm">
-                        <li className="flex flex-center align-center justify-center items-center">
-                          <Image
-                            src={
-                              process.env.NEXT_PUBLIC_API_URL +
-                              "/system/public/uploads/" +
-                              brand.brand_photo
-                            }
-                            width={256}
-                            height={256}
-                            alt="hero"
-                          />
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">
-                      <div className="flex items-center justify-center">
-                        <Link
-                          href={`/brands/${brand.id}`}
-                          className="mx-auto lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Mağazaya Git
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </Fragment>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="container mx-auto text-center py-6 mb-12">
           <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-white">
             Bizi sosyal medya hesaplarımızdan takip edin.
@@ -732,7 +725,7 @@ export default function Home() {
                   className="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                   href="/"
                 >
-                  Anastasia Beauty Lab
+                  Anastasia Beauty Lab.
                 </Link>
               </div>
               <div className="flex-1 ml-2">
@@ -772,10 +765,26 @@ export default function Home() {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
+                      href="#products"
+                      className="no-underline hover:underline text-gray-800 hover:text-pink-500"
+                    >
+                      Ürünler
+                    </Link>
+                  </li>
+                  <li className="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <Link
                       href="/courses"
                       className="no-underline hover:underline text-gray-800 hover:text-pink-500"
                     >
-                      Kurslar
+                      Eğitimler
+                    </Link>
+                  </li>
+                  <li className="mt-2 inline-block mr-2 md:block md:mr-0">
+                    <Link
+                      href="/courses"
+                      className="no-underline hover:underline text-gray-800 hover:text-pink-500"
+                    >
+                      Hizmetler
                     </Link>
                   </li>
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
