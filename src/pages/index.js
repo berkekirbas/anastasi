@@ -77,23 +77,24 @@ export default function Home() {
                     Hakkımızda
                   </Link>
                 </li>
+
                 <li className="mr-3">
                   <Link
                     className="inline-block py-2 px-4 text-black font-bold no-underline"
-                    href="/about"
+                    href="/courses"
                   >
-                    İletişim
+                    Eğitimler
                   </Link>
                 </li>
                 <li className="mr-3">
                   <Link
                     className="inline-block py-2 px-4 text-black font-bold no-underline"
-                    href="https://instagram.com/anastasia.beauty.lab"
+                    href="/courses"
                   >
-                    Instagram
+                    Hizmetler
                   </Link>
                 </li>
-                {public_brands.map((brand) => (
+                {/*public_brands.map((brand) => (
                   <li key={brand.id}>
                     <Link
                       id="navAction"
@@ -104,7 +105,23 @@ export default function Home() {
                       {brand.brand_name}
                     </Link>
                   </li>
-                ))}
+                ))*/}
+                <li className="mr-3">
+                  <Link
+                    className="inline-block py-2 px-4 text-black font-bold no-underline"
+                    href="#products"
+                  >
+                    Ürünler
+                  </Link>
+                </li>
+                <li className="mr-3">
+                  <Link
+                    className="inline-block py-2 px-4 text-black font-bold no-underline"
+                    href="/about"
+                  >
+                    İletişim
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -645,7 +662,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="bg-gray-100 py-8">
+        <section className="bg-gray-100 py-8" id="products">
           <div className="container mx-auto px-2 pt-2 pb-8 text-gray-800">
             <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
               Ürünlerimizi inceleyin ve satın alın.
@@ -656,7 +673,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
               {public_brands.map((brand) => (
                 <Fragment key={brand.id}>
-                  <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10">
+                  <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10 ml-2">
                     <div className="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
                       <div className="p-8 text-3xl font-bold text-center border-b-4">
                         {brand.brand_name}
