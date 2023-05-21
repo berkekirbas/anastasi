@@ -112,7 +112,6 @@ export default function ProductAddModal({ show, setShow }) {
 
               <Input
                 id="photo1"
-                multiple
                 type="file"
                 name="photo1"
                 placeholder="Ürün Fotoğrafı 1"
@@ -125,7 +124,6 @@ export default function ProductAddModal({ show, setShow }) {
 
               <Input
                 id="photo2"
-                multiple
                 type="file"
                 name="photo2"
                 placeholder="Ürün Fotoğrafı 2"
@@ -138,7 +136,6 @@ export default function ProductAddModal({ show, setShow }) {
 
               <Input
                 id="photo3"
-                multiple
                 type="file"
                 name="photo3"
                 placeholder="Ürün Fotoğrafı 3"

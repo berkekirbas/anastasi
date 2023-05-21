@@ -136,7 +136,6 @@ export default function EditProductModal({
                 className="block mt-1 w-full"
                 onChange={(event) => setPhoto1(event.target.files[0])}
                 required
-                value={photo1}
               />
               <Label htmlFor="photo2">Ürün Fotoğrafı 2</Label>
 
@@ -148,7 +147,6 @@ export default function EditProductModal({
                 className="block mt-1 w-full"
                 onChange={(event) => setPhoto2(event.target.files[0])}
                 required
-                value={photo2}
               />
               <Label htmlFor="photo3">Ürün Fotoğrafı 3</Label>
 
@@ -160,7 +158,6 @@ export default function EditProductModal({
                 className="block mt-1 w-full"
                 onChange={(event) => setPhoto3(event.target.files[0])}
                 required
-                value={photo3}
               />
 
               <Label htmlFor="product_price">Ürün Fiyatı</Label>
