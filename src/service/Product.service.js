@@ -91,7 +91,7 @@ class ProductService {
     brand_id,
     category_id
   ) => {
-    await this.csrf();
+    //await this.csrf();
     const token = localStorage.getItem("token");
 
     if (photo1 != null || photo2 != null || photo3 != null) {
@@ -105,6 +105,7 @@ class ProductService {
       formData.append("product_price", product_price);
       formData.append("brand_id", brand_id);
       formData.append("category_id", category_id);
+      formData.append("_token", await this.csrf());
 
       return await axios
         .put(`${this.baseUrl}/api/product/${product_id}`, formData, {
