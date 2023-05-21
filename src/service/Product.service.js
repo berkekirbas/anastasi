@@ -105,10 +105,10 @@ class ProductService {
       formData.append("product_price", product_price);
       formData.append("brand_id", brand_id);
       formData.append("category_id", category_id);
-      formData.append("_token", await this.csrf());
+      //formData.append("_token", await this.csrf());
 
       return await axios
-        .put(`${this.baseUrl}/api/product/${product_id}`, formData, {
+        .post(`${this.baseUrl}/api/product/${product_id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -119,7 +119,7 @@ class ProductService {
         });
     } else {
       return await axios
-        .put(
+        .post(
           `${this.baseUrl}/api/product/${product_id}`,
           {
             product_name: product_name,
