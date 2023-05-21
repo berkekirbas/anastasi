@@ -41,7 +41,7 @@ export default function Home() {
                 className="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
                 href="/"
               >
-                Anastasiabeautylab
+                Anastasia Beauty Lab
               </Link>
             </div>
             <div className="block lg:hidden pr-4">
@@ -77,13 +77,12 @@ export default function Home() {
                     Hakkımızda
                   </Link>
                 </li>
-
                 <li className="mr-3">
                   <Link
                     className="inline-block py-2 px-4 text-black font-bold no-underline"
-                    href="/courses"
+                    href="#products"
                   >
-                    Eğitimler
+                    Ürünler
                   </Link>
                 </li>
                 <li className="mr-3">
@@ -109,9 +108,9 @@ export default function Home() {
                 <li className="mr-3">
                   <Link
                     className="inline-block py-2 px-4 text-black font-bold no-underline"
-                    href="#products"
+                    href="/courses"
                   >
-                    Ürünler
+                    Eğitimler
                   </Link>
                 </li>
                 <li className="mr-3">
@@ -132,7 +131,7 @@ export default function Home() {
           <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
               <p className="uppercase tracking-loose w-full">
-                Anastasiabeautylab
+                Anastasia Beauty Lab
               </p>
               <h1 className="my-4 text-5xl font-bold leading-tight">
                 Kalite tesadüf değildir.
@@ -729,32 +728,14 @@ export default function Home() {
           <div className="container mx-auto px-8">
             <div className="w-full flex flex-col md:flex-row py-6">
               <div className="flex-1 mb-6 text-black">
-                <a
+                <Link
                   className="text-pink-600 no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
-                  href="#"
+                  href="/"
                 >
-                  <svg
-                    className="h-8 fill-current inline"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 512.005 512.005"
-                  >
-                    <rect
-                      fill="#2a2a31"
-                      x="16.539"
-                      y="425.626"
-                      width="479.767"
-                      height="50.502"
-                      transform="matrix(1,0,0,1,0,0)"
-                    />
-                    <path
-                      className="plane-take-off"
-                      d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z "
-                    />
-                  </svg>
-                  Anastasiabeautylab
-                </a>
+                  Anastasia Beauty Lab
+                </Link>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 ml-2">
                 <p className="uppercase text-gray-500 md:mb-6">Bağlantılar</p>
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
@@ -783,30 +764,10 @@ export default function Home() {
                   </li>
                 </ul>
               </div>
-              <div className="flex-1">
-                <p className="uppercase text-gray-500 md:mb-6">Legal</p>
-                <ul className="list-reset mb-6">
-                  <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                    <Link
-                      href="/terms"
-                      className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                    >
-                      Şartlar ve Koşullar
-                    </Link>
-                  </li>
-                  <li className="mt-2 inline-block mr-2 md:block md:mr-0">
-                    <Link
-                      href="/privacy"
-                      className="no-underline hover:underline text-gray-800 hover:text-pink-500"
-                    >
-                      Gizlilik Politikamız
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+
               <div className="flex-1">
                 <p className="uppercase text-gray-500 md:mb-6">
-                  Anastasiabeautylab
+                  Anastasia Beauty Lab
                 </p>
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
@@ -838,7 +799,7 @@ export default function Home() {
             </div>
           </div>
           <Link href="/" className="text-gray-500">
-            Tüm Hakları saklıdır. 2023 - Anastasiabeautylab
+            Tüm Hakları saklıdır. 2023 - Anastasia Beauty Lab
           </Link>
         </footer>
       </main>
