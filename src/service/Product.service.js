@@ -47,7 +47,7 @@ class ProductService {
     brand_id,
     category_id
   ) => {
-    //await this.csrf();
+    // await this.csrf();
     const token = localStorage.getItem("token");
 
     const formData = new FormData();
@@ -107,7 +107,7 @@ class ProductService {
       formData.append("category_id", category_id);
 
       return await axios
-        .put(`${this.baseUrl}/api/product/${product_id}`, formData, {
+        .patch(`${this.baseUrl}/api/product/${product_id}`, formData, {
           headers: {
             "Content-Type": "multipart/form-data",
             Authorization: `Bearer ${token}`,
@@ -118,7 +118,7 @@ class ProductService {
         });
     } else {
       return await axios
-        .put(
+        .patch(
           `${this.baseUrl}/api/product/${product_id}`,
           {
             product_name: product_name,
