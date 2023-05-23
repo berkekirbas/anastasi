@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { Loader, MenuLayout, icon_minus, icon_plus } from "@/components";
 import { addToCard, cardSelector } from "@/store/slices/cardSlice";
 import { getMenu, publicSelector } from "@/store/slices/publicSlice";
+import Head from "next/head";
+import { current } from "@reduxjs/toolkit";
 
 export default function ProductPage() {
   const router = useRouter();
@@ -15,7 +17,8 @@ export default function ProductPage() {
 
   const { menu, isLoading } = useSelector(publicSelector);
 
-  const [show, setShow] = useState(false);
+  let [currentImageId, setCurrentImageId] = useState(1);
+  const [currentImage, setCurrentImage] = useState(null);
 
   // const { card } = useSelector(cardSelector);
 
@@ -57,6 +60,42 @@ export default function ProductPage() {
 
   if (isLoading == null || isLoading) return <Loader />;
 
+  const checker = function (photo1, photo2, photo3) {
+    console.log(currentImageId);
+    if (currentImageId == 1) {
+      setCurrentImage(
+        process.env.NEXT_PUBLIC_API_URL + "/system/public/uploads/" + photo1
+      );
+      return;
+    }
+    if (currentImageId == 2) {
+      setCurrentImage(
+        process.env.NEXT_PUBLIC_API_URL + "/system/public/uploads/" + photo2
+      );
+      return;
+    }
+    if (currentImageId == 3) {
+      setCurrentImage(
+        process.env.NEXT_PUBLIC_API_URL + "/system/public/uploads/" + photo3
+      );
+      return;
+    }
+    if (currentImageId > 3) {
+      setCurrentImageId(3);
+      setCurrentImage(
+        process.env.NEXT_PUBLIC_API_URL + "/system/public/uploads/" + photo3
+      );
+      return;
+    }
+    if (currentImageId < 1) {
+      setCurrentImageId(1);
+      setCurrentImage(
+        process.env.NEXT_PUBLIC_API_URL + "/system/public/uploads/" + photo1
+      );
+      return;
+    }
+  };
+
   return (
     <MenuLayout>
       {menu[0].categories
@@ -66,13 +105,30 @@ export default function ProductPage() {
             .filter((product) => product.id == product_id)
             .map((filtered_product) => (
               <>
+                <Head>
+                  <title>
+                    {filtered_product.product_name + " - " + menu[0].brand_name}
+                  </title>
+                </Head>
                 <main
                   key="0"
                   className="flex flex-col lg:flex-row items-center lg:gap-28 p-0 lg:p-16"
                 >
                   <section className="relative h-[20%]" id="image-section">
                     <div className="absolute top-[50%] bottom-[50%] w-full flex items-center justify-between px-4 lg:hidden">
-                      <button className="relative left-0 bg-white h-10 w-10 p-1 rounded-full flex items-center previous">
+                      <button
+                        id="prev"
+                        className="relative left-0 bg-white h-10 w-10 p-1 rounded-full flex items-center previous"
+                        onClick={() => {
+                          setCurrentImageId(currentImageId--);
+                          console.log(currentImageId);
+                          checker(
+                            filtered_product.photo1,
+                            filtered_product.photo2,
+                            filtered_product.photo3
+                          );
+                        }}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"
@@ -86,7 +142,19 @@ export default function ProductPage() {
                           />
                         </svg>
                       </button>
-                      <button className="relative right-0 bg-white h-10 w-10 p-1 rounded-full flex items-center next">
+                      <button
+                        id="next"
+                        className="relative right-0 bg-white h-10 w-10 p-1 rounded-full flex items-center next"
+                        onClick={async () => {
+                          setCurrentImageId(currentImageId++);
+                          console.log(currentImageId);
+                          checker(
+                            filtered_product.photo1,
+                            filtered_product.photo2,
+                            filtered_product.photo3
+                          );
+                        }}
+                      >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="h-8 w-8"
@@ -106,9 +174,11 @@ export default function ProductPage() {
                       <Image
                         className="lg:light-box-image lg:rounded-xl h-full w-full lg:cursor-pointer"
                         src={
-                          process.env.NEXT_PUBLIC_API_URL +
-                          "/system/public/uploads/" +
-                          filtered_product.product_photo
+                          currentImage != null
+                            ? currentImage
+                            : process.env.NEXT_PUBLIC_API_URL +
+                              "/system/public/uploads/" +
+                              filtered_product.product_photo
                         }
                         alt="image-1"
                         id="main-img"
@@ -120,7 +190,11 @@ export default function ProductPage() {
                     <div className="lg:flex gap-8 items-center hidden">
                       <div className="">
                         <Image
-                          className="active-thumbnail rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                          className={
+                            currentImageId == 1
+                              ? "active-thumbnail h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                              : "h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                          }
                           src={
                             process.env.NEXT_PUBLIC_API_URL +
                             "/system/public/uploads/" +
@@ -129,12 +203,24 @@ export default function ProductPage() {
                           alt="image-product-1"
                           width={146}
                           height={146}
+                          onClick={() => {
+                            setCurrentImageId(1);
+                            setCurrentImage(
+                              process.env.NEXT_PUBLIC_API_URL +
+                                "/system/public/uploads/" +
+                                filtered_product.photo1
+                            );
+                          }}
                         />
                       </div>
                       {filtered_product.photo2 != null && (
                         <div className="">
                           <Image
-                            className="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            className={
+                              currentImageId == 2
+                                ? "active-thumbnail h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                                : "h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                            }
                             src={
                               process.env.NEXT_PUBLIC_API_URL +
                               "/system/public/uploads/" +
@@ -143,13 +229,25 @@ export default function ProductPage() {
                             alt="image-product-2"
                             width={146}
                             height={146}
+                            onClick={() => {
+                              setCurrentImageId(2);
+                              setCurrentImage(
+                                process.env.NEXT_PUBLIC_API_URL +
+                                  "/system/public/uploads/" +
+                                  filtered_product.photo2
+                              );
+                            }}
                           />
                         </div>
                       )}
                       {filtered_product.photo3 != null && (
                         <div className="">
                           <Image
-                            className="rounded-md h-full hover:opacity-50 cursor-pointer thumbnails"
+                            className={
+                              currentImageId == 3
+                                ? "active-thumbnail h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                                : "h-full rounded-md hover:opacity-50 cursor-pointer thumbnails"
+                            }
                             src={
                               process.env.NEXT_PUBLIC_API_URL +
                               "/system/public/uploads/" +
@@ -158,6 +256,14 @@ export default function ProductPage() {
                             alt="image-product-3"
                             width={146}
                             height={146}
+                            onClick={() => {
+                              setCurrentImageId(3);
+                              setCurrentImage(
+                                process.env.NEXT_PUBLIC_API_URL +
+                                  "/system/public/uploads/" +
+                                  filtered_product.photo3
+                              );
+                            }}
                           />
                         </div>
                       )}

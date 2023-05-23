@@ -62,6 +62,11 @@ export default function MenuLayout({ title, children }) {
               />
 
               <ul className="lg:ml-10 lg:mt-0 mt-10 items-center gap-3 lg:flex text-sm">
+                <li className="nav-link">
+                  <Link href="/" className="text-orange font-bold">
+                    Ana Sayfa
+                  </Link>
+                </li>
                 {menu &&
                   menu[0].categories.map((category) => (
                     <li key={category.id} className="nav-link">
